@@ -22,10 +22,9 @@ queens n = map fst $ foldM oneMoreQueen ([],[1..n]) [1..n]  where
  
 -- prints what the board looks like for a solution; with an extra newline
 printSolution y = do
-     let n = length 
-	 
-     mapM_ (\x -> putStrLn [if z == x then 'X' else 'O' | z <- [1..n]] putStrLn("-")) y
-     putStrLn ""
- 
--- prints all the solutions for  queens
+    let n = length y
+    --mapM (\x -> putStrLn [if z == x then 'X' else ' ' | z <- [1..n]]) y
+    putStrLn "-+"
+	mapM (\x -> putStrLn [if z == x then 'X' else ' ' | z <- [1..n]]) y
+-- prints all the solutions for 6 queens
 main = mapM_ printSolution $ queens 4
