@@ -20,12 +20,13 @@ def imprimirSoluciones(n):
         print(linea)
         print(tablero_sep)
 #---------------------------------------------------------#
-
-#Hacer funcion, para ver cuanto tarda con las soluciones        
+imprimirSoluciones(4)#Muestra el tablero
+ 
+#Muestra el tiempo 
 ph = "Solucion del problema de la   %2d reinas: %5d soluciones (%9.3f segundos)"
-for n in range (1, 13):
+for n in range (1, 9):
     t0= time()
     lr = len(list(nReinas(n)))
     t1 = time ()
     print(ph % (n, lr, t1 -t0))
-imprimirSoluciones(4)
+
