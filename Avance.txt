@@ -1,0 +1,3 @@
+Python listo (afinar detalles)
+scala listo (afinar detalles)
+haskell (en progreso)
