@@ -35,11 +35,23 @@ noAtaca _ [] _ = True
 noAtaca r (a:rs) distH = abs(r-a) /= distH &&
                          noAtaca r rs (distH+1)
 
-drawQueens :: [Int] -> String
-drawQueens [] = "No hay soluciones"
-drawQueens x = concatMap showRow x
-    where
-        size = length x
-        spaces n = concat $ replicate n "  "
-        showRow n = spaces (n - 1) ++ "X " ++ spaces (size - n)
+drawQueens :: [Int] ->  IO ()
+drawQueens [] = putStr "No hay soluciones"
+drawQueens x = do
+        let size = length x
+        let lista = x
+        let fila size = concat $ replicate size "-+"
+		-- in putStrLn ("+" ++ fila (length x))--Coloca la fila de -+
+		 
+        let spaces n = concat $ replicate n " |"
+        let filaReinas n = "|" ++spaces (n - 1) ++ "X|" ++ spaces (size - n)
+         --in putStrLn (filaReinas 2)
+        let recorre p = if p>= 0 then filaReinas p ++ "\n" ++ "+" ++ fila (length x) ++ "\n" ++ recorre(p-1) else ""
+        let cantidad_elementos = size - 1
+		 in putStrLn ("+" ++ fila (length x) ++ "\n" ++ recorre cantidad_elementos)
+-- drawQueens x = concatMap showRow x
+    -- where
+        -- size = length x
+        -- spaces n = concat $ replicate n "  " 
+        -- showRow n = spaces (n - 1) ++ "X " ++ spaces (size - n)
 						 
