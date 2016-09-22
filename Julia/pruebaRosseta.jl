@@ -29,7 +29,7 @@ function mark!(b::Board, k::Int, j::Int)
     b.diag45  $= (1 << (32+j-k))
 end
 
-"Tests if a square is menaced."
+"Tests if a square is atacado."
 function test(b::Board, k::Int, j::Int)
     b.cols    & (1 << j)        +
     b.diag135 & (1 << (j+k))    +
@@ -66,6 +66,7 @@ function main()
         print("elapsed:")
         solutions = @time solve!(b, n-1, n)
         @show solutions
+        
         println()
     end
 end
