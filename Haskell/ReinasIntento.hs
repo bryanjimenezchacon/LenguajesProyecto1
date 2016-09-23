@@ -42,41 +42,17 @@ drawQueens x = do
         let largoSol = length x
         let lista = reverse x
         let fila size = concat $ replicate size "-+"
-		-- in putStrLn ("+" ++ fila (length x))--Coloca la fila de -+
-		 
+
         let spaces n = concat $ replicate n " |"
         let filaReinas n = "|" ++spaces (n - 1) ++ "X|" ++ spaces (size - n)
-         --in putStrLn (filaReinas 2)
+
         let recorre p = if p>= 0 then filaReinas (lista!!p) ++ "\n" ++ "+" ++ fila (length x) ++ "\n" ++ recorre(p-1) else ""
         let cantidad_elementos = largoSol - 1
-		 in putStrLn ("+" ++ fila (length x) ++ "\n" ++ recorre cantidad_elementos)
--- drawQueens x = concatMap showRow x
-    -- where
-        -- size = length x
-        -- spaces n = concat $ replicate n "  " 
-        -- showRow n = spaces (n - 1) ++ "X " ++ spaces (size - n)
-		
+         in putStrLn ("+" ++ fila (length x) ++ "\n" ++ recorre cantidad_elementos)
+
 dibujaTableros :: [[Int]] ->  IO ()
 dibujaTableros [[]] = drawQueens []
 dibujaTableros x = do
         let lenSoluciones = length x
         let lista = reverse x
-        let take (length x) (repeat (recorreSoluciones (lenSoluciones-1)))
-        -- let recorreSoluciones p = do
-                                    -- if p>= 0 
-										-- then
-										    -- do  drawQueens (lista!!p)
-
-									-- else
-									    -- return()
-
-									--recorreSoluciones (p-1)
-
-
-        --let recorreSoluciones p = if p>= 0 then drawQueens (lista!!p) else drawQueens []
-        -- let cantidad_elementos = (lenSoluciones - 1)
-		 -- in recorreSoluciones cantidad_elementos
-		 
-		 
-		 
--- usar dibujaTableros (zreinas 4)
+         in putStrLn("aca estoy")
