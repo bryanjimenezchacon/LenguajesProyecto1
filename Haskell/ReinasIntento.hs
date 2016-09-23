@@ -1,3 +1,4 @@
+module Main where
 import Data.List ((\\))
  
 -- El tablero se representa por una lista de números que indican las
@@ -26,7 +27,6 @@ reinas n = aux n
           aux m = [r:rs | rs <- aux (m-1),
                           r <- ([1..n] \\ rs),
                           noAtaca r rs 1]
-
 -- (noAtaca r rs d) se verifica si la reina r no ataca a niguna de las
 -- de la lista rs donde la primera de la lista está a una distancia
 -- horizontal d. 
@@ -36,7 +36,7 @@ noAtaca r (a:rs) distH = abs(r-a) /= distH &&
                          noAtaca r rs (distH+1)
 
 drawQueens :: [Int] ->  IO ()
-drawQueens [] = putStr "No hay soluciones"
+drawQueens [] = putStrLn "No hay mas soluciones"
 drawQueens x = do
         let size = length x
         let largoSol = length x
@@ -57,3 +57,11 @@ dibujaTableros x = do
 		   then do drawQueens (x!!0) 
 		           dibujaTableros(tail x)
 		else drawQueens []
+
+main :: IO ()
+main  =
+    do
+      putStrLn "Incio"
+      dibujaTableros (reinas 4)
+      putStrLn "FIN"
+ 
