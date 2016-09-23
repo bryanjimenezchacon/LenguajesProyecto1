@@ -26,7 +26,7 @@ reinas n = aux n
           aux m = [r:rs | rs <- aux (m-1),
                           r <- ([1..n] \\ rs),
                           noAtaca r rs 1]
- 
+
 -- (noAtaca r rs d) se verifica si la reina r no ataca a niguna de las
 -- de la lista rs donde la primera de la lista está a una distancia
 -- horizontal d. 
@@ -53,6 +53,7 @@ drawQueens x = do
 dibujaTableros :: [[Int]] ->  IO ()
 dibujaTableros [[]] = drawQueens []
 dibujaTableros x = do
-        let lenSoluciones = length x
-        let lista = reverse x
-         in putStrLn("aca estoy")
+		if length(x) > 0
+		   then do drawQueens (x!!0) 
+		           dibujaTableros(tail x)
+		else drawQueens []
