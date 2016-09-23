@@ -8,8 +8,10 @@ end
 
 function search(places, i , n)
   if i == n + 1
+    dibuja(places, i , n)
     return 1
   end
+
   s = 0
   @inbounds for j in 1:n
     if isok(places, i , j)
@@ -31,7 +33,18 @@ function isok(places, i , j)
     qi +=1
   end
   true
-
 end
 
+function dibuja(places, i , n)
+  println(places)
+  println("ya")
+  extremosTablero = ("\n+" * "-+" ^ n)
+  linea = ("+" * "-+" ^ n)
+  println(extremosTablero )
+  @inbounds for l in places
+
+           println("|" * " |"  ^(l - 1) * "X|" * " |"  ^ (n - l))
+           println(linea)
+ end
+end
 print(solve(4))

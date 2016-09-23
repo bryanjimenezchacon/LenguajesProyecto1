@@ -27,6 +27,7 @@ function mark!(b::Board, k::Int, j::Int)
     b.cols    $= (1 << j)
     b.diag135 $= (1 << (j+k))
     b.diag45  $= (1 << (32+j-k))
+
 end
 
 "Tests if a square is atacado."
@@ -34,6 +35,7 @@ function test(b::Board, k::Int, j::Int)
     b.cols    & (1 << j)        +
     b.diag135 & (1 << (j+k))    +
     b.diag45  & (1 << (32+j-k)) == 0
+    println(k,j)
 end
 
 "Backtracking solver."
@@ -59,14 +61,17 @@ end
 
 "C/C++-style `main` function."
 function main()
-    for n = 1:17
+    for n = 1:4
+        z = 666
         gc()
+        @show z
         b = Board()
         @show n
         print("elapsed:")
         solutions = @time solve!(b, n-1, n)
+        @show b
         @show solutions
-        
+
         println()
     end
 end
