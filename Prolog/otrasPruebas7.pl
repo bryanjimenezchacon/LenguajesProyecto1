@@ -12,8 +12,9 @@ noattack(X/Y, [X1/Y1 | Others]) :-
     noattack( X/Y, Others).
 
 template(N, L) :-
-    findall(I/_, between(1,N,I), L).
 
+    findall(I/_, between(1,N,I), L).%Imprime la solucion
+    %print_queens([1/3,2/1,3/4,4/5,5/3,6/6], 6).
 % Uso:  N=4, template(N, L), solution(N, L).
 
 %Prueba de impresion
@@ -24,6 +25,10 @@ print_queens(Queens, N):-
            ( Col1 is Col-1, format('~|~`#t~*+Q~`#t~*|~n',[Col1,N]) )
           ).
 %Uso: print_queens([1/3,2/1,3/4,4/5,5/3,6/6], 6).
+
+%Prueba de automatica
+%
+%
 
 queen(X, Y, N):-
     template(N, L),    % Build the template of the solution
@@ -36,3 +41,4 @@ queen(X, Y, N):-
     % Print total number of solutions
     length(All, Len),
     format('Total Output is ~w.~n', [Len]).
+%Uso:  queen(1,2,5).
