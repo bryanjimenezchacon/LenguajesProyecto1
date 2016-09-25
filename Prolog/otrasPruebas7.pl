@@ -21,8 +21,9 @@ template(N, L) :-
 %
 %
 print_queens(Queens, N):-
+    nl,
     forall(member(_/Col, Queens),
-           ( Col1 is Col-1, format('~|~`#t~*+Q~`#t~*|~n',[Col1,N]) )
+           (  Col1 is Col-1, format('~|~`#t~*+X~`#t~*|~N',[Col1,N]) )
           ).
 %Uso: print_queens([1/3,2/1,3/4,4/5,5/3,6/6], 6).
 
@@ -41,4 +42,5 @@ queen(X, Y, N):-
     % Print total number of solutions
     length(All, Len),
     format('Total Output is ~w.~n', [Len]).
-%Uso:  queen(1,2,5).
+% Uso: queen(_,_,5). %donde el numero es la cantidad de reinas y
+% dimensiones de tablero
