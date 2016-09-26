@@ -20,10 +20,19 @@ template(N, L) :-
 %Prueba de impresion
 %
 %
+repeat(Str,1,Str).
+repeat(Str,Num,Res):-
+    Num1 is Num-1,
+    repeat(Str,Num1,Res1),
+    string_concat(Str, Res1, Res).
+
 print_queens(Queens, N):-
-    nl,
+    nl,nl,
+    (format("~`-t~*|~N",[N])),
     forall(member(_/Col, Queens),
-           (  Col1 is Col-1, format('~|~`#t~*+X~`Pt~*|~N',[Col1,N]) )
+           (  Col1 is Col-1, format("~`|+` t~*+|X~` t~*|~N",[Col1,N]),
+	      (format("~`-t~*|~N",[N]))
+	   )
           ).
 %Uso: print_queens([1/3,2/1,3/4,4/5,5/3,6/6], 6).
 
@@ -41,6 +50,9 @@ queen(X, Y, N):-
 
     % Print total number of solutions
     length(All, Len),
-    format('Total Output is ~w.~n', [Len]).
+    format('Total de soluciones ~w.~n', [Len]).
 % Uso: queen(_,_,5). %donde el numero es la cantidad de reinas y
 % dimensiones de tablero
+
+%Uso Total compile(otraspruebas7).
+%queen(_,_,4).
