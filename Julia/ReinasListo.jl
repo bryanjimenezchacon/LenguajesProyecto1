@@ -1,30 +1,30 @@
 
 import Base
-print("hola")
-function solve(n::Int)
-  places = zeros(Int, n)
-  search(places, 1, n)
+print("Problema N-Reinas")
+function resolver(n::Int)
+  lugares = zeros(Int, n)
+  buscaPosiciones(lugares, 1, n)
 end
 
-function search(places, i , n)
+function buscaPosiciones(lugares, i , n)
   if i == n + 1
-    dibuja(places, i , n)
+    dibuja(lugares, i , n)
     return 1
   end
 
   s = 0
   @inbounds for j in 1:n
-    if isok(places, i , j)
-      places[i] = j
-      s += search(places, i + 1, n)
+    if posValida(lugares, i , j)
+      lugares[i] = j
+      s += buscaPosiciones(lugares, i + 1, n)
     end
   end
   s
 end
 
-function isok(places, i , j)
+function posValida(lugares, i , j)
   qi = 1
-  @inbounds for qj in places
+  @inbounds for qj in lugares
     if qi == i
       break
     elseif qj == j || abs(qi - i) == abs(qj - j)
@@ -35,16 +35,15 @@ function isok(places, i , j)
   true
 end
 
-function dibuja(places, i , n)
-  println(places)
-  println("ya")
+function dibuja(lugares, i , n)
+  #println(lugares)
   extremosTablero = ("\n+" * "-+" ^ n)
   linea = ("+" * "-+" ^ n)
   println(extremosTablero )
-  @inbounds for l in places
+  @inbounds for l in lugares
 
            println("|" * " |"  ^(l - 1) * "X|" * " |"  ^ (n - l))
            println(linea)
  end
 end
-print(solve(4))
+print(resolver(4))

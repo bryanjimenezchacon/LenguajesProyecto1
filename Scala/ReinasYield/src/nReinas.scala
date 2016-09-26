@@ -1,5 +1,5 @@
 object nReinas {
-  def main(args: Array[String]) = show(nreinas(4))
+  def main(args: Array[String]) = mostrar(nreinas(4))
 
   def nreinas(n: Int): Set[List[Int]] = {
     def lugar(k: Int): Set[List[Int]] =
@@ -20,7 +20,7 @@ object nReinas {
     }
     lugar(n)
   }
-  def show(solutions: Set[List[Int]]): Unit = {
+  def mostrar(solutions: Set[List[Int]]): Unit = {
 
 for (solution <- solutions) yield {
       println("\n+" + "-+" * solution.length)
