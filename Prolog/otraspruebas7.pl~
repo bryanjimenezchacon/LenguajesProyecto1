@@ -25,13 +25,20 @@ repeat(Str,Num,Res):-
     Num1 is Num-1,
     repeat(Str,Num1,Res1),
     string_concat(Str, Res1, Res).
-
+loop(N) :-
+        between(1, N, X),
+        write("-+"),
+        false.
 print_queens(Queens, N):-
     nl,nl,
-    (format("~`-t~*|~N",[N])),
-    forall(member(_/Col, Queens),
-           (  Col1 is Col-1, format("~`|+` t~*+|X~` t~*|~N",[Col1,N]),
-	      (format("~`-t~*|~N",[N]))
+    (write("+"),foreach(between(1,N,X), (write("-+"))),nl),
+    forall(member(_/Col, Queens),(
+		  write("|"),foreach(between(2,(Col),X), (write(" |"))), write("X|"),foreach(between(Col,N,X), (write(" |"))),nl,
+          % (  Col1 is Col-1, format("~` t~*+X~` t~*|~N",[Col1,N]),
+	      %(format("~`-t~*|~N",[N])),
+	      %loop(4)
+	      write("+"),foreach(between(1,N,X), (write("-+"))),nl
+
 	   )
           ).
 %Uso: print_queens([1/3,2/1,3/4,4/5,5/3,6/6], 6).

@@ -2,4 +2,6 @@ Python listo (afinar detalles)
 Scala listo (afinar detalles)
 Julia listo (afinar detalles)
 haskell (afinar detalles)
-prolog (intentar lo del profe)
+prolog (afinar detalles)
+
+afinar detalles = limpiar codigo y hacer analisis
