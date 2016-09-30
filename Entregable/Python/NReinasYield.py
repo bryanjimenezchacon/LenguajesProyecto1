@@ -24,7 +24,7 @@ imprimirSoluciones(4)#Muestra tableros para n reinas
  
 #Muestra el tiempo y cantidad de soluciones para cada problema
 ph = "Solucion del problema con %2d reina(s): %5d solucion(es) en %9.3f segundos"
-for n in range (4, 12):
+for n in range (4, 11):
     t0= time()
     lr = len(list(nReinas(n)))
     t1 = time ()

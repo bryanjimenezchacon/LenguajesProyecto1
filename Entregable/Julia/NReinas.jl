@@ -47,7 +47,8 @@ function dibuja(lugares, i , n)#Muestra el tablero
  end
 end
 #Para probar eficiencia comentar la funcion dibuja invocada en buscaPosiciones
-@inbounds for n in range(4,11)
+n = 4
+#@inbounds for n in range(4,11)
   println("Problema con " * string(n) * " Reinas");
   tic();
   print("Cantidad de soluciones: ")
@@ -55,4 +56,4 @@ end
   print(" ");
   toc();
   println();
-end
+#end

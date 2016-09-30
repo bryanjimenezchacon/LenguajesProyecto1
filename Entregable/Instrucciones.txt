@@ -1,0 +1,16 @@
+-Python
+	*Cargar y ejecutar el programa 
+	OPCIONAL Se puede utilizar "imprimirSoluciones(n)" n=cant de Reinas para imprimir los tableros
+-Julia
+	*Cargar y ejecutar el programa 
+	OPCIONAL Se puede utilizar "print(resolver(n))" n=cant de Reinas para imprimir los tableros
+-Haskell
+	*Cargar y ejecutar el programa 
+	*Escribir "main" para ejecutar el modulo
+	OPCIONAL Se puede utilizar "dibujaTableros (reinas n)" n=cant de Reinas para imprimir los tableros
+-Prolog
+	*Cargar y ejecutar el programa con "compile(nreinas)."
+	*Utilizar "reinas(_,_,n)." n=cant de Reinas para imprimir los tableros
+-Scala
+	*Cargar y ejecutar el programa como Scala Application
+	OPCIONAL Se puede modificar el valor de cantReinas donde cantReinas = cantidad de Reinas para imprimir los tableros
