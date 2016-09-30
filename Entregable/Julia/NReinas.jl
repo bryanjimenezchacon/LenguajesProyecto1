@@ -1,12 +1,12 @@
 
 import Base
-print("Problema N-Reinas")
-function resolver(n::Int)
+#print("Problema N-Reinas")
+function resolver(n::Int)#Genera la lista de posiciones para utilizar con 0, e inicia el proceso
   lugares = zeros(Int, n)
   buscaPosiciones(lugares, 1, n)
 end
 
-function buscaPosiciones(lugares, i , n)
+function buscaPosiciones(lugares, i , n)#Busca las posiciones posibles
   if i == n + 1
     dibuja(lugares, i , n)
     return 1
@@ -22,7 +22,7 @@ function buscaPosiciones(lugares, i , n)
   s
 end
 
-function posValida(lugares, i , j)
+function posValida(lugares, i , j)#Verifica la posicion como aceptable
   qi = 1
   @inbounds for qj in lugares
     if qi == i
@@ -35,7 +35,7 @@ function posValida(lugares, i , j)
   true
 end
 
-function dibuja(lugares, i , n)
+function dibuja(lugares, i , n)#Muestra el tablero
   #println(lugares)
   extremosTablero = ("\n+" * "-+" ^ n)
   linea = ("+" * "-+" ^ n)
@@ -46,4 +46,13 @@ function dibuja(lugares, i , n)
            println(linea)
  end
 end
-print(resolver(4))
+#Para probar eficiencia comentar la funcion dibuja invocada en buscaPosiciones
+@inbounds for n in range(4,11)
+  println("Problema con " * string(n) * " Reinas");
+  tic();
+  print("Cantidad de soluciones: ")
+  print(resolver(n));
+  print(" ");
+  toc();
+  println();
+end

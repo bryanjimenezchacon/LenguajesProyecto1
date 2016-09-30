@@ -11,8 +11,7 @@ reinas n = aux n
                           r <- ([1..n] \\ rs),
                           noAtaca r rs 1]
 -- (noAtaca r rs d) se verifica si la reina r no ataca a niguna de las
--- de la lista rs donde la primera de la lista está a una distancia
--- horizontal d. 
+-- de la lista rs. 
 noAtaca :: Int -> Tablero -> Int -> Bool
 noAtaca _ [] _ = True
 noAtaca r (a:rs) distH = abs(r-a) /= distH &&
@@ -36,10 +35,10 @@ dibujaSol x = do
 dibujaTableros :: [[Int]] ->  IO ()
 dibujaTableros [[]] = dibujaSol []
 dibujaTableros x = do
-		if length(x) > 0
-		   then do dibujaSol (x!!0) 
-		           dibujaTableros(tail x)
-		else dibujaSol []
+        if length(x) > 0
+           then do dibujaSol (x!!0) 
+                   dibujaTableros(tail x)
+        else dibujaSol []
 
 main :: IO ()
 main  =

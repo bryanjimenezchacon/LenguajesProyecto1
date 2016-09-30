@@ -1,0 +1,48 @@
+solucion(_, []).%Busca la solucion
+solucion(N, [X/Y|Resto]) :-
+    solucion(N, Resto),
+    between(1, N, Y),
+    noAtaca(X/Y, Resto).
+
+noAtaca(_,[]).%Verifica que no se ataque a otra reinas
+noAtaca(X/Y, [X1/Y1 | Resto]) :-
+    Y =\= Y1,
+    Y1-Y =\= X1-X,
+    Y1-Y =\= X-X1,
+    noAtaca( X/Y, Resto).
+
+template(N, L) :-
+
+    findall(I/_, between(1,N,I), L).%Para imprimir la solucion
+
+%Impresionde Tablero
+%Uso: imprimirReinas([1/3,2/1,3/4,4/5,5/3,6/6], 6).
+
+imprimirReinas(Sol, N):-
+    nl,nl,
+    (write("+"),foreach(between(1,N,X), (write("-+"))),nl),
+    forall(member(_/Col, Sol),(
+		  write("|"),foreach(between(2,(Col),X), (write(" |"))), write("X|"),C is N-1,foreach(between(Col,C,X), (write(" |"))),nl,
+	      write("+"),foreach(between(1,N,X), (write("-+"))),nl
+	   )
+          ).
+
+%Calcula todas las soluciones y las Imprime
+%
+reinas(X, Y, N):-
+    template(N, L),member(X/Y, L),!,
+    format('Problema con ~w reinas ~n', [N]),
+    %Encuentra todas las soluciones posibles y las imprime
+    findall(s, (solucion(N, L), imprimirReinas(L, N)), All),%Comentar para no mostrar tableros
+    %findall(s, (solucion(N, L)), All), %Descomentar para ver solo la cantidad de soluciones
+
+    % Imprime el total de soluciones
+    length(All, Len),
+    format('Total de soluciones ~w.~n', [Len]).
+
+% Uso: reinas(_,_,5). %donde el numero es la cantidad de reinas y
+% dimensiones de tablero
+
+%Uso Total compile(nreinas).
+%reinas(_,_,4).
+%Usar time(reinas(_,_,4)). para medir el tiemo de ejecución
